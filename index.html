@@ -1,0 +1,550 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>6 October</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+min-height:100vh;
+background:#050505;
+color:#fff;
+font-family:Arial,Helvetica,sans-serif;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* BACKGROUND */
+
+body::before{
+content:"";
+position:fixed;
+width:500px;
+height:500px;
+background:radial-gradient(circle,rgba(255,255,255,.10),transparent 65%);
+top:-180px;
+left:-180px;
+filter:blur(20px);
+}
+
+body::after{
+content:"";
+position:fixed;
+width:500px;
+height:500px;
+background:radial-gradient(circle,rgba(120,120,255,.10),transparent 65%);
+bottom:-200px;
+right:-200px;
+filter:blur(20px);
+}
+
+/* PARTICLES */
+
+.particles{
+position:fixed;
+inset:0;
+pointer-events:none;
+}
+
+.particle{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+opacity:.35;
+animation:float 7s infinite ease-in-out;
+}
+
+.p1{left:10%;top:20%;animation-delay:0s}
+.p2{left:25%;top:70%;animation-delay:1s}
+.p3{left:42%;top:15%;animation-delay:2s}
+.p4{left:58%;top:80%;animation-delay:3s}
+.p5{left:75%;top:30%;animation-delay:1.5s}
+.p6{left:90%;top:65%;animation-delay:4s}
+.p7{left:65%;top:10%;animation-delay:2.5s}
+.p8{left:15%;top:90%;animation-delay:3.5s}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0);
+opacity:.2;
+}
+50%{
+transform:translateY(-25px);
+opacity:.8;
+}
+}
+
+/* MAIN */
+
+.screen{
+width:100%;
+max-width:1050px;
+padding:30px;
+text-align:center;
+position:relative;
+z-index:2;
+}
+
+.hidden{
+display:none;
+}
+
+/* FIRST SCREEN */
+
+.small-text{
+font-size:11px;
+letter-spacing:6px;
+color:#777;
+margin-bottom:25px;
+text-transform:uppercase;
+}
+
+.question{
+font-size:clamp(42px,8vw,95px);
+font-weight:900;
+letter-spacing:-5px;
+line-height:.95;
+margin-bottom:45px;
+}
+
+.question span{
+background:linear-gradient(90deg,#fff,#777,#fff);
+background-size:200%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+to{
+background-position:200%;
+}
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:18px;
+}
+
+.btn{
+position:relative;
+padding:16px 42px;
+min-width:145px;
+border:1px solid rgba(255,255,255,.35);
+border-radius:100px;
+background:rgba(255,255,255,.03);
+backdrop-filter:blur(10px);
+color:white;
+font-size:15px;
+font-weight:700;
+letter-spacing:2px;
+cursor:pointer;
+transition:.35s;
+}
+
+.btn:hover{
+background:#fff;
+color:#000;
+border-color:#fff;
+transform:translateY(-4px);
+box-shadow:0 15px 40px rgba(255,255,255,.15);
+}
+
+/* NO SCREEN */
+
+.no-title{
+font-size:clamp(35px,7vw,75px);
+font-weight:900;
+letter-spacing:-3px;
+margin-bottom:30px;
+}
+
+/* COUNTDOWN */
+
+.countdown-top{
+font-size:11px;
+letter-spacing:6px;
+color:#777;
+margin-bottom:18px;
+}
+
+.date{
+font-size:clamp(55px,11vw,125px);
+font-weight:900;
+letter-spacing:-7px;
+line-height:.9;
+background:linear-gradient(180deg,#fff,#777);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:55px;
+}
+
+.timer{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+max-width:780px;
+margin:auto;
+}
+
+.box{
+position:relative;
+overflow:hidden;
+padding:28px 10px;
+border:1px solid rgba(255,255,255,.12);
+border-radius:22px;
+background:linear-gradient(
+145deg,
+rgba(255,255,255,.07),
+rgba(255,255,255,.015)
+);
+backdrop-filter:blur(15px);
+}
+
+.box::before{
+content:"";
+position:absolute;
+width:100px;
+height:100px;
+background:rgba(255,255,255,.08);
+border-radius:50%;
+filter:blur(35px);
+top:-50px;
+left:50%;
+transform:translateX(-50%);
+}
+
+.number{
+position:relative;
+font-size:clamp(32px,6vw,65px);
+font-weight:900;
+font-variant-numeric:tabular-nums;
+letter-spacing:-3px;
+}
+
+.label{
+position:relative;
+margin-top:12px;
+font-size:9px;
+letter-spacing:3px;
+color:#777;
+font-weight:700;
+}
+
+.bottom{
+margin-top:35px;
+font-size:11px;
+letter-spacing:5px;
+color:#555;
+}
+
+@media(max-width:600px){
+
+.screen{
+padding:20px;
+}
+
+.question{
+letter-spacing:-3px;
+}
+
+.buttons{
+gap:10px;
+}
+
+.btn{
+min-width:120px;
+padding:14px 25px;
+}
+
+.date{
+letter-spacing:-4px;
+margin-bottom:35px;
+}
+
+.timer{
+gap:7px;
+}
+
+.box{
+padding:20px 5px;
+border-radius:15px;
+}
+
+.label{
+font-size:7px;
+letter-spacing:1px;
+}
+
+}
+
+@media(max-width:380px){
+
+.timer{
+grid-template-columns:repeat(2,1fr);
+max-width:300px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="particles">
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="particle p6"></div>
+<div class="particle p7"></div>
+<div class="particle p8"></div>
+
+</div>
+
+
+<!-- FIRST SCREEN -->
+
+<section id="questionScreen" class="screen">
+
+<div class="small-text">
+A LITTLE SOMETHING IS COMING
+</div>
+
+<h1 class="question">
+ARE YOU<br>
+<span>EXCITED?</span> 👀
+</h1>
+
+<div class="buttons">
+
+<button class="btn" onclick="showCountdown()">
+YES
+</button>
+
+<button class="btn" onclick="showNo()">
+NO
+</button>
+
+</div>
+
+</section>
+
+
+<!-- NO SCREEN -->
+
+<section id="noScreen" class="screen hidden">
+
+<div class="small-text">
+OH...
+</div>
+
+<h1 class="no-title">
+MAYBE LATER 😶
+</h1>
+
+<button class="btn" onclick="goBack()">
+GO BACK
+</button>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section id="countdownScreen" class="screen hidden">
+
+<div class="countdown-top">
+THE WAIT IS ALMOST OVER
+</div>
+
+<h1 class="date">
+6 OCTOBER
+</h1>
+
+<div class="timer">
+
+<div class="box">
+<div id="days" class="number">00</div>
+<div class="label">DAYS</div>
+</div>
+
+<div class="box">
+<div id="hours" class="number">00</div>
+<div class="label">HOURS</div>
+</div>
+
+<div class="box">
+<div id="minutes" class="number">00</div>
+<div class="label">MINUTES</div>
+</div>
+
+<div class="box">
+<div id="seconds" class="number">00</div>
+<div class="label">SECONDS</div>
+</div>
+
+</div>
+
+<div class="bottom">
+SEE YOU ON 6 OCTOBER
+</div>
+
+</section>
+
+
+<script>
+
+const questionScreen =
+document.getElementById("questionScreen");
+
+const noScreen =
+document.getElementById("noScreen");
+
+const countdownScreen =
+document.getElementById("countdownScreen");
+
+let started=false;
+
+
+/* YES */
+
+function showCountdown(){
+
+questionScreen.classList.add("hidden");
+
+noScreen.classList.add("hidden");
+
+countdownScreen.classList.remove("hidden");
+
+startCountdown();
+
+}
+
+
+/* NO */
+
+function showNo(){
+
+questionScreen.classList.add("hidden");
+
+countdownScreen.classList.add("hidden");
+
+noScreen.classList.remove("hidden");
+
+}
+
+
+/* BACK */
+
+function goBack(){
+
+noScreen.classList.add("hidden");
+
+countdownScreen.classList.add("hidden");
+
+questionScreen.classList.remove("hidden");
+
+}
+
+
+/* COUNTDOWN */
+
+function startCountdown(){
+
+if(started)return;
+
+started=true;
+
+const target =
+new Date("October 6, 2026 00:00:00").getTime();
+
+function update(){
+
+const now =
+new Date().getTime();
+
+const difference =
+target-now;
+
+if(difference<=0){
+
+document.getElementById("days").innerText="00";
+
+document.getElementById("hours").innerText="00";
+
+document.getElementById("minutes").innerText="00";
+
+document.getElementById("seconds").innerText="00";
+
+document.querySelector(".countdown-top").innerText=
+"THE DAY IS HERE";
+
+document.querySelector(".bottom").innerText=
+"6 OCTOBER 🎉";
+
+return;
+
+}
+
+const days =
+Math.floor(
+difference/(1000*60*60*24)
+);
+
+const hours =
+Math.floor(
+(difference/(1000*60*60))%24
+);
+
+const minutes =
+Math.floor(
+(difference/(1000*60))%60
+);
+
+const seconds =
+Math.floor(
+(difference/1000)%60
+);
+
+document.getElementById("days").innerText=
+String(days).padStart(2,"0");
+
+document.getElementById("hours").innerText=
+String(hours).padStart(2,"0");
+
+document.getElementById("minutes").innerText=
+String(minutes).padStart(2,"0");
+
+document.getElementById("seconds").innerText=
+String(seconds).padStart(2,"0");
+
+}
+
+update();
+
+setInterval(update,1000);
+
+}
+
+</script>
+
+</body>
+</html>
